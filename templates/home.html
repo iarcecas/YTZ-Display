@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arrivals at Billy Bishop Airport</title>
+    <link rel="stylesheet" href="/static/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <h1>Billy Bishop <br> Airport Arrivals</h1>
+
+    <div id="weather-info"></div>
+
+    <div id="table-bg">
+        <table>
+            <tr>
+                <th>Time</th>
+                <th>Flight</th>
+                <th>Origin</th>
+                <th>Status</th>
+            </tr>
+            <tbody>
+                {% for flight in flights %}
+                    <tr class="clickable-row" data-href="https://www.flightradar24.com/{{ flight[1] }}">
+                        <td>{{ flight[0] }}</td>
+                        <td>{{ flight[1] }}</td>
+                        <td>{{ flight[2] }}</td>
+                        <td>{{ flight[3] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        
+        </table>
+    </div>
+    <script>
+        document.querySelectorAll('.clickable-row').forEach(row =>{
+            row.addEventListener('click', () =>{
+                const url = row.getAttribute('data-href');
+                window.location.href = url;
+            });
+        });
+
+        const apiKey = 'b316d774d0cb42ea81a195153242706';
+        const city = 'Toronto'
+
+        const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;        
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const weatherInfo = document.getElementById('weather-info');
+                const { temp_c, wind_kph, condition } = data.current;
+
+                weatherInfo.innerHTML = `
+                    <p>${temp_c}°C</p>&nbsp; &nbsp;
+                    <p>${condition.text}</p>
+                    <img src=${condition.icon}>
+                    <br><p>Wind Speed: ${wind_kph} km/h</p>
+                `;
+            })
+            .catch(error => {
+                console.error('Error fetching weather data:', error);
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+.istok-web-regular {
+    font-family: "Istok Web", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.istok-web-bold {
+    font-family: "Istok Web", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+h1{
+    font-size: 4vw;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+body{
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Istok Web;
+    background-color: black;
+    color: white;
+}
+
+table{
+    color: white;
+    text-align: left;
+    border-collapse: collapse;   
+    width: 95%; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#table-bg{    
+    background-color: #101F4F;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;    
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+th{
+    font-size: 1.4vw;
+    border-bottom: 1px solid white; 
+    padding-bottom: 8px;
+}
+td{
+    font-size: 1.1vw;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+#Temp-Status{
+    justify-content: space-between;    
+    width: 20vw;
+    font-weight: bold;
+}
+
+#weather-info img{
+    width: 3.7vw;    
+    vertical-align: middle;
+    margin-bottom: 0.5vw;
+}
+
+#weather-info p{
+    font-size: 1.8vw;
+    font-weight: bold;
+    margin-top: 0;
+    display: inline-block;
+    margin-bottom: 1vh;
+}
